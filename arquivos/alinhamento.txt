@@ -1,0 +1,3 @@
+Alinhamento 4 rodas;1000.00;0101;true;0.7;Usado
+Alinhamento 2 rodas;300.00;0102;false;0.5;Novo
+Alinhamento e balanceamento;500.00;0103;true;0.9;Desgastado

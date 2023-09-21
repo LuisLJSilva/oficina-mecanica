@@ -1,0 +1,13 @@
+package br.edu.infnet.oficinamecanica;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class OficinamecanicaApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(OficinamecanicaApplication.class, args);
+	}
+
+}

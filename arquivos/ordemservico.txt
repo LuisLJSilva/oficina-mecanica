@@ -1,0 +1,12 @@
+OS;Pedido do Luis;Luis Silva;98787676565;luis.silva@al.infnet.edu.br
+M;Troca de Farol;200.00;0001;true;10.00;Estética
+P;Pintura completa;1000.00;0101;true;0.7;Azul
+A;Alinhamento 4 rodas;1000.00;0101;true;0.7;Usado
+M;Refri;20;234;true;1500;Coke
+P;Retoque;300.00;0102;false;0.5;Preto
+A;Alinhamento 2 rodas;300.00;0102;false;0.5;Novo
+M;Troca de Óleo;150.00;0002;false;10.00;Preventiva
+P;Pintura decorativa;500.00;0103;true;0.9;Vermelho
+A;Alinhamento e balanceamento;500.00;0103;true;0.9;Desgastado
+OS;Pedido do Huguinho;Hugo Sauro;12398723487;hugo.sauro@prof.infnet.edu.br
+M;Troca de Amortecedor;500.00;0003;true;15.00;Corretiva

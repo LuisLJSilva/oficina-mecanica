@@ -1,0 +1,3 @@
+Troca de Farol;200.00;0001;true;10.00;Estética
+Troca de Óleo;150.00;0002;false;10.00;Preventiva
+Troca de Amortecedor;500.00;0003;true;15.00;Corretiva
