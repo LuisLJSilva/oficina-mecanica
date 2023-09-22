@@ -18,6 +18,7 @@
 	  <table class="table table-striped">
 	    <thead>
 	      <tr>
+	      	<th>ID</th>
 	        <th>Nome</th>
 	        <th>CPF</th>
 	        <th>E-mail</th>
@@ -28,10 +29,11 @@
 	   	    
 <c:forEach var="c" items="${listaCliente}">
 		      <tr>
+		      	<td>${c.id}</td>
 		        <td>${c.nome}</td>
 		        <td>${c.cpf}</td>
 		        <td>${c.email}</td>
-		        <td><a href="/cliente/${c.cpf}/excluir">excluir</a> </td>
+		        <td><a href="/cliente/${c.id}/excluir">excluir</a> </td>
 		      </tr>
 	      </c:forEach>
 	    </tbody>

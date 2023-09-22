@@ -1,8 +1,21 @@
 package br.edu.infnet.oficinamecanica.model.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import org.springframework.stereotype.Component;
+
+@Entity
+@Table(name = "TServico")
+@Component
 public abstract class Servico {
 	
-	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
 	private String tipoServico;
 	private float preco;
 	private int codigoServico;

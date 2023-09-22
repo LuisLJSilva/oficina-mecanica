@@ -38,7 +38,7 @@ public class ClienteController {
 		return "redirect:/cliente/lista";
 	}
 	
-	@GetMapping(value = "/cliente/{cpf}/excluir") 
+	@GetMapping(value = "/cliente/{id}/excluir") 
 	public String exclusao(@PathVariable Integer id) {
 		
 		clienteService.excluir(id);

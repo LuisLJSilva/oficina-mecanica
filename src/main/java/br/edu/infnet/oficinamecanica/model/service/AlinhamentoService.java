@@ -1,29 +1,34 @@
 package br.edu.infnet.oficinamecanica.model.service;
 
 import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.edu.infnet.oficinamecanica.model.domain.Alinhamento;
+import br.edu.infnet.oficinamecanica.model.repository.AlinhamentoRepository;
 
 @Service
 public class AlinhamentoService {
 	
-	private Map<Integer, Alinhamento> mapaAlinhamento = new HashMap<Integer, Alinhamento>();
-
+	@Autowired
+	private AlinhamentoRepository alinhamentoRepository;
+	
 	public Collection<Alinhamento> obterLista(){
-		return mapaAlinhamento.values();
+		
+		return (Collection<Alinhamento>) alinhamentoRepository.findAll();
+		
 	}
 	
 	public void incluir(Alinhamento alinhamento) {
-		mapaAlinhamento.put(alinhamento.getCodigoServico(), alinhamento);		
-		System.out.println("[Alinhamento] Inclusão realizada com sucesso: " + alinhamento);		
+		
+		alinhamentoRepository.save(alinhamento);
+	
 	}
 	
-	public void excluir(int getCodigoServico) {
-		mapaAlinhamento.remove(getCodigoServico);
+	public void excluir(Integer id) {
+		
+		alinhamentoRepository.deleteById(id);
 	}
 	
 }

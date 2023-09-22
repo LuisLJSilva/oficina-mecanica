@@ -38,10 +38,10 @@ public class ManutencaoController {
 		return "redirect:/manutencao/lista";
 	}
 
-	@GetMapping(value = "/manutencao/{codigoServico}/excluir") 
-	public String exclusao(@PathVariable int codigoServico) {
+	@GetMapping(value = "/manutencao/{id}/excluir") 
+	public String exclusao(@PathVariable Integer id) {
 		
-		manutencaoService.excluir(codigoServico);
+		manutencaoService.excluir(id);
 
 		return "redirect:/manutencao/lista";
 	}

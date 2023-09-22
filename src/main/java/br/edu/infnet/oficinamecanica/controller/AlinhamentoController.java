@@ -40,10 +40,10 @@ public class AlinhamentoController {
 	}
 	
 
-	@GetMapping(value = "/alinhamento/{codigoServico}/excluir") 
-	public String exclusao(@PathVariable int codigoServico) {
+	@GetMapping(value = "/alinhamento/{id}/excluir") 
+	public String exclusao(@PathVariable Integer id) {
 		
-		alinhamentoService.excluir(codigoServico);
+		alinhamentoService.excluir(id);
 
 		return "redirect:/alinhamento/lista";
 	}

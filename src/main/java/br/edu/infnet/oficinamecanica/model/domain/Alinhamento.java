@@ -1,9 +1,21 @@
 package br.edu.infnet.oficinamecanica.model.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+import org.springframework.stereotype.Component;
 
+@Entity
+@Table(name = "TAlinhamento")
+@Component
 public class Alinhamento extends Servico {
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
 	private float ajusteCambagem;
 	private boolean freiosVerificados;
 	private String condicaoPneus;

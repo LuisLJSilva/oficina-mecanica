@@ -39,10 +39,10 @@ public class PinturaController {
 		return "redirect:/pintura/lista";
 	}
 
-	@GetMapping(value = "/pintura/{codigoServico}/excluir") 
-	public String exclusao(@PathVariable int codigoServico) {
+	@GetMapping(value = "/pintura/{id}/excluir") 
+	public String exclusao(@PathVariable Integer id) {
 		
-		pinturaService.excluir(codigoServico);
+		pinturaService.excluir(id);
 
 		return "redirect:/pintura/lista";
 	}

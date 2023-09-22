@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 public class OrdemServico {
-	
+
 	private String status;
 	private LocalDateTime dataAgendamento;
 	private boolean urgente;
