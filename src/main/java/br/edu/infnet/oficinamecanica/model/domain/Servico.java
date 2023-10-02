@@ -1,16 +1,22 @@
 package br.edu.infnet.oficinamecanica.model.domain;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import org.springframework.stereotype.Component;
 
 @Entity
 @Table(name = "TServico")
-@Component
+@Inheritance(strategy = InheritanceType.JOINED) 
 public abstract class Servico {
 	
 	@Id
@@ -19,10 +25,20 @@ public abstract class Servico {
 	private String tipoServico;
 	private float preco;
 	private int codigoServico;
+	@ManyToOne
+	@JoinColumn(name = "idUsuario")
+	private Usuario usuario;
+	@ManyToMany(mappedBy = "servicos")
+	private List<OrdemServico> ordemServico;
 	
-	public Servico() {
+	public Servico() { 
 		
 	}
+	
+	public Servico(Integer id) {
+		this.id = id;
+	}
+	
 	
 	public Servico(String tipoServico, float preco, int codigoServico) {
 		this.tipoServico = tipoServico;
@@ -33,6 +49,14 @@ public abstract class Servico {
 	@Override
 	public String toString() {
 		return String.format("%s;%.2f;%d", tipoServico, preco, codigoServico);
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public String getTipoServico() {
@@ -57,6 +81,22 @@ public abstract class Servico {
 
 	public void setCodigoServico(int codigoServico) {
 		this.codigoServico = codigoServico;
+	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
+	public List<OrdemServico> getOrdemServico() {
+		return ordemServico;
+	}
+
+	public void setOrdemServico(List<OrdemServico> ordemServico) {
+		this.ordemServico = ordemServico;
 	}
 	
 	

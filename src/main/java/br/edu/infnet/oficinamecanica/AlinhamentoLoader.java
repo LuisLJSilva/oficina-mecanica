@@ -8,14 +8,14 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Controller;
 
 import br.edu.infnet.oficinamecanica.model.domain.Alinhamento;
+import br.edu.infnet.oficinamecanica.model.domain.Usuario;
 import br.edu.infnet.oficinamecanica.model.service.AlinhamentoService;
 
-@Order(2)
+
+@Order(4)
 @Component
-@Controller
 public class AlinhamentoLoader implements ApplicationRunner {
 	
 	@Autowired
@@ -41,6 +41,8 @@ public class AlinhamentoLoader implements ApplicationRunner {
 									Boolean.valueOf(campos[3]),
 									Float.valueOf(campos[4]),
 									campos[5]);
+			
+			alinhamento.setUsuario(new Usuario(Integer.valueOf(campos[6])));
 			
 			alinhamentoService.incluir(alinhamento);
 

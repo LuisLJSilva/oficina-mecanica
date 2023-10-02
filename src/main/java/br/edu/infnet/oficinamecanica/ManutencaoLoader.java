@@ -10,9 +10,11 @@ import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import br.edu.infnet.oficinamecanica.model.domain.Manutencao;
+import br.edu.infnet.oficinamecanica.model.domain.Usuario;
 import br.edu.infnet.oficinamecanica.model.service.ManutencaoService;
 
-@Order(1)
+
+@Order(3)
 @Component
 public class ManutencaoLoader implements ApplicationRunner {
 	
@@ -36,9 +38,11 @@ public class ManutencaoLoader implements ApplicationRunner {
 									campos[0],
 									Float.valueOf(campos[1]),
 									Integer.valueOf(campos[2]),
-									Boolean.valueOf(campos[3]),
+					  				Boolean.valueOf(campos[3]),
 									Float.valueOf(campos[4]),
 									campos[5]);
+			
+			manutencao.setUsuario(new Usuario(Integer.valueOf(campos[6])));
 
 			manutencaoService.incluir(manutencao);
 

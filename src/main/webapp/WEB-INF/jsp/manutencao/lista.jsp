@@ -18,9 +18,10 @@
 	  <table class="table table-striped">
 	    <thead>
 	      <tr>
+	      	<th>ID</th>
 	      	<th>Tipo de Serviço</th>
 	      	<th>Preço</th>
-	      	<th>Codigo do Serviço</th>
+	      	<th>Codigo do Serviço</th> 
 	        <th>Necessita de Peça</th>
 	        <th>Tempo de Trabalho</th>
 	        <th>Tipo de Manutenção</th>
@@ -31,18 +32,18 @@
 	   	  
 <c:forEach var="m" items="${listaManutencao}">
 		      <tr>
+		      	<td>${m.id}</td>
 		      	<td>${m.tipoServico}</td>
 		      	<td>${m.preco}</td>
 		      	<td>${m.codigoServico}</td>
 		        <td>${m.necessitaPeca}</td>
 		        <td>${m.tempoTrabalho}</td>
 		        <td>${m.tipoManutencao}</td>
-		        <td><a href="/manutencao/${m.tipoManutencao}/excluir">excluir</a> </td>
+		        <td><a href="/manutencao/${m.id}/excluir">excluir</a> </td>
 		      </tr>
 	      </c:forEach>
 	    </tbody>
 	  </table>
-	  
 	</div>
 </body>
 </html>

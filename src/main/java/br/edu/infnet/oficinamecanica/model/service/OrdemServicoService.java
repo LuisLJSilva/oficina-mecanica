@@ -1,30 +1,40 @@
 package br.edu.infnet.oficinamecanica.model.service;
 
-import java.time.LocalDateTime;
 import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.edu.infnet.oficinamecanica.model.domain.OrdemServico;
+import br.edu.infnet.oficinamecanica.model.domain.Usuario;
+import br.edu.infnet.oficinamecanica.model.repository.OrdemServicoRepository;
 
 @Service
 public class OrdemServicoService {
 	
-	private Map<LocalDateTime, OrdemServico> mapaOrdemServico = new HashMap<LocalDateTime, OrdemServico>();
-
+	@Autowired
+	OrdemServicoRepository ordemServicoRepository;
+	
 	public Collection<OrdemServico> obterLista(){
-		return mapaOrdemServico.values();
+		
+		
+		return (Collection<OrdemServico>) ordemServicoRepository.findAll();
+		
+	}
+	
+	public Collection<OrdemServico> obterLista(Usuario usuario) {
+		
+		return (Collection<OrdemServico>) ordemServicoRepository.obterLista(usuario.getId()); 
+		
 	}
 	
 	public void incluir(OrdemServico ordemServico) {
-		mapaOrdemServico.put(ordemServico.getDataAgendamento(), ordemServico);		
-		System.out.println("[OrdemServico] Inclusão realizada com sucesso: " + ordemServico);		
+		
+		ordemServicoRepository.save(ordemServico);
 	}
 	
-	public void excluir(LocalDateTime dataAgendamento) {
-		mapaOrdemServico.remove(dataAgendamento);
+	public void excluir(Integer id) {
+		ordemServicoRepository.deleteById(id);
 	}
 
 }

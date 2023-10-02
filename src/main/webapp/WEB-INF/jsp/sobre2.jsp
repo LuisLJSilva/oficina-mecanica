@@ -1,60 +1,69 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
-<html>
+<html lang="pt">
 <head>
-<meta charset="UTF-8">
-<title>Sistema Oficina Mecanica</title>
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	<meta charset="ISO-8859-1">
+	<title>Oficina Mec‚nica</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+	<style>
+		.hero-section {
+			background-color: #f9f9f9;
+			padding: 50px 0;
+			border-radius: 8px;
+			box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+		}
+	</style>
 </head>
 <body>
-	<div class="container">
-		<h2>Sistema Oficina Mecanica - Documenta√ß√£o das Classes</h2>
+	<c:import url="/WEB-INF/jsp/menu.jsp"/>
 
-		<!-- OrdemServico -->
+	<div class="container-fluid hero-section mt-5">
+		<div class="row">
+			<div class="col-md-8 offset-md-2 text-center">
+				<h1>DocumentaÁ„o das Classes</h1>
+								
+				<p class="lead">Sistema de agendamento de serviÁos para seu automÛvel</p>
+		</div>
+		</div>
 		<h3>Classe OrdemServico</h3>
-		<p>Representa uma ordem de servi√ßo na oficina mec√¢nica.</p>
+		<p>Representa uma ordem de serviÁo na oficina mec‚nica.</p>
 		<table class="table table-bordered">
 			<thead>
 				<tr>
 					<th>Atributo</th>
 					<th>Tipo</th>
-					<th>Descri√ß√£o</th>
+					<th>DescriÁ„o</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr>
-					<td>numeroOrdem</td>
-					<td>int</td>
-					<td>N√∫mero da ordem de servi√ßo</td>
+					<td>urgente</td>
+					<td>boolean</td>
+					<td>Se o agendamento È urgente ou n„o</td>
 				</tr>
 				<tr>
-					<td>data</td>
+					<td>dataAgendamento</td>
 					<td>LocalDateTime</td>
-					<td>Data e hora da ordem de servi√ßo</td>
+					<td>Data e hora da ordem de serviÁo</td>
 				</tr>
 				<tr>
 					<td>status</td>
 					<td>String</td>
-					<td>Status da ordem (Em andamento, Conclu√≠do, etc.)</td>
+					<td>Status da ordem de serviÁo (Em andamento, ConcluÌdo, Agendado)</td>
 				</tr>
 			</tbody>
 		</table>
 
 		<!-- Cliente -->
 		<h3>Classe Cliente</h3>
-		<p>Representa o cliente que solicitou a ordem de servi√ßo.</p>
+		<p>Representa o cliente que solicitou a ordem de serviÁo.</p>
 		<table class="table table-bordered">
 			<thead>
 				<tr>
 					<th>Atributo</th>
 					<th>Tipo</th>
-					<th>Descri√ß√£o</th>
+					<th>DescriÁ„o</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -69,163 +78,162 @@
 					<td>CPF do cliente</td>
 				</tr>
 				<tr>
-					<td>telefone</td>
+					<td>email</td>
 					<td>String</td>
-					<td>Telefone para contato</td>
+					<td>E-mail para contato</td>
 				</tr>
 			</tbody>
 		</table>
 
-		<!-- Servico (Classe m√£e) -->
-		<h3>Classe Servico (Classe m√£e)</h3>
-		<p>Representa um tipo de servi√ßo que pode ser oferecido pela
+		<h3>Classe Servico</h3>
+		<p>Representa um tipo de serviÁo que pode ser oferecido pela
 			oficina.</p>
 		<table class="table table-bordered">
 			<thead>
 				<tr>
 					<th>Atributo</th>
 					<th>Tipo</th>
-					<th>Descri√ß√£o</th>
+					<th>DescriÁ„o</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr>
-					<td>descricao</td>
+					<td>tipoServico</td>
 					<td>String</td>
-					<td>Descri√ß√£o do servi√ßo</td>
+					<td>DescriÁ„o do tipo de serviÁo (ManutenÁ„o, Pintura, Alinhamento)</td>
 				</tr>
 				<tr>
 					<td>preco</td>
 					<td>float</td>
-					<td>Pre√ßo do servi√ßo</td>
+					<td>PreÁo do serviÁo</td>
 				</tr>
 				<tr>
-					<td>tempoEstimado</td>
+					<td>codigoServico</td>
 					<td>int</td>
-					<td>Tempo estimado para a conclus√£o (em minutos)</td>
+					<td>codigo para identificaÁ„o do serviÁo</td>
 				</tr>
 			</tbody>
 		</table>
 
-		<!-- Manutencao -->
-		<h3>Classe Manutencao (Classe filha)</h3>
-		<p>Classe respons√°vel por armazenar informa√ß√µes sobre a manuten√ß√£o
-			de ve√≠culos.</p>
+		<h3>Classe Manutencao</h3>
+		<p>Classe respons·vel por armazenar informaÁıes sobre a manutenÁ„o
+			de veÌculos.</p>
 		<table class="table table-bordered">
 			<thead>
 				<tr>
 					<th>Atributo</th>
 					<th>Tipo</th>
-					<th>Descri√ß√£o</th>
+					<th>DescriÁ„o</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr>
-					<td>tipo</td>
-					<td>String</td>
-					<td>Tipo de manuten√ß√£o (preventiva, corretiva, etc.)</td>
+					<td>necessitaPeca</td>
+					<td>boolean</td>
+					<td>Se o veÌculo necessita de peÁas adicionais ou n„o</td>
 				</tr>
 				<tr>
-					<td>ferramentasNecessarias</td>
-					<td>String</td>
-					<td>Ferramentas necess√°rias para realizar a manuten√ß√£o</td>
+					<td>tempoTrabalho</td>
+					<td>float</td>
+					<td>tempo estimado de trabalho para concluir a manutenÁ„o, em horas</td>
 				</tr>
 				<tr>
-					<td>tempoEstimado</td>
-					<td>int</td>
-					<td>Tempo estimado para a conclus√£o da manuten√ß√£o, em minutos</td>
+					<td>tipoManutencao</td>
+					<td>String</td>
+					<td>Tipo de manutenÁ„o a ser realizada (Preventiva, Corretiva, EstÈtica)</td>
 				</tr>
 			</tbody>
 		</table>
 
-		<!-- Pintura -->
-		<h3>Classe Pintura (Classe filha)</h3>
-		<p>Classe respons√°vel por armazenar informa√ß√µes sobre a pintura de
-			ve√≠culos.</p>
+		<h3>Classe Pintura</h3>
+		<p>Classe respons·vel por armazenar informaÁıes sobre a pintura de
+			veÌculos.</p>
 		<table class="table table-bordered">
 			<thead>
 				<tr>
 					<th>Atributo</th>
 					<th>Tipo</th>
-					<th>Descri√ß√£o</th>
+					<th>DescriÁ„o</th>
 				</tr>
 			</thead>
 			<tbody>
+				<tr>
+					<td>intensidadeBrilho</td>
+					<td>float</td>
+					<td> Õndice de brilho da pintura apÛs a aplicaÁ„o, em uma escala de 0 a 100</td>
+				</tr>
+				<tr>
+					<td>tintaEcologica</td>
+					<td>boolean</td>
+					<td>Indica se a tinta usada na pintura È ecolÛgica ou n„o</td>
+				</tr>
 				<tr>
 					<td>cor</td>
 					<td>String</td>
-					<td>Cor da pintura que ser√° aplicada</td>
+					<td>Cor da pintura que ser· aplicada (Azul, Vermelho, Preto)</td>
 				</tr>
+			</tbody>
+		</table>
+
+		<h3>Classe Alinhamento</h3>
+		<p>Classe respons·vel por armazenar informaÁıes sobre o
+			alinhamento de veÌculos.</p>
+		<table class="table table-bordered">
+			<thead>
 				<tr>
-					<td>tipoTinta</td>
-					<td>String</td>
-					<td>Tipo da tinta utilizada (√† base de √°gua, esmalte, etc.)</td>
+					<th>Atributo</th>
+					<th>Tipo</th>
+					<th>DescriÁ„o</th>
 				</tr>
+			</thead>
+			<tbody>
 				<tr>
-					<td>area</td>
+					<td>ajusteCambagem</td>
 					<td>float</td>
-					<td>√Årea a ser pintada em metros quadrados</td>
+					<td>Ajuste de cambagem em graus</td>
+				</tr>
+				<tr>
+					<td>freiosVerificados</td>
+					<td>boolean</td>
+					<td>Se os freios foram verificados durante o alinhamento ou n„o</td>
+				</tr>
+				<tr>
+					<td>condicaoPneus</td>
+					<td>String</td>
+					<td>CondiÁ„o dos pneus (Novo, Usado, Desgastado)</td>
 				</tr>
 			</tbody>
 		</table>
+		
+		<h3>Classe Usuario</h3>
+<p>Representa o usu·rio que pode acessar o sistema de agendamento.</p>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Atributo</th>
+            <th>Tipo</th>
+            <th>DescriÁ„o</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>nome</td>
+            <td>String</td>
+            <td>Nome do usu·rio</td>
+        </tr>
+        <tr>
+            <td>email</td>
+            <td>String</td>
+            <td>Email para acesso ao sistema</td>
+        </tr>
+        <tr>
+            <td>senha</td>
+            <td>String</td>
+            <td>Senha para autenticaÁ„o no sistema</td>
+        </tr>
+    </tbody>
+</table>
 
-		<!-- Alinhamento -->
-		<h3>Classe Alinhamento (Classe filha)</h3>
-		<p>Classe respons√°vel por armazenar informa√ß√µes sobre o
-			alinhamento de ve√≠culos.</p>
-		<table class="table table-bordered">
-			<thead>
-				<tr>
-					<th>Atributo</th>
-					<th>Tipo</th>
-					<th>Descri√ß√£o</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>eixo</td>
-					<td>String</td>
-					<td>Eixo a ser alinhado (dianteiro, traseiro, etc.)</td>
-				</tr>
-				<tr>
-					<td>modeloCarro</td>
-					<td>String</td>
-					<td>Modelo do carro que vai receber o alinhamento</td>
-				</tr>
-				<tr>
-					<td>nivelDificuldade</td>
-					<td>int</td>
-					<td>N√≠vel de dificuldade do alinhamento, em uma escala de 1 a
-						5</td>
-				</tr>
-			</tbody>
-		</table>
-
-		<!-- Oficina -->
-		<h3>Classe Oficina</h3>
-		<p>Classe principal que gerencia os servi√ßos e clientes da
-			oficina.</p>
-		<table class="table table-bordered">
-			<thead>
-				<tr>
-					<th>Atributo</th>
-					<th>Tipo</th>
-					<th>Descri√ß√£o</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>nome</td>
-					<td>String</td>
-					<td>Nome da Oficina</td>
-				</tr>
-				<tr>
-					<td>endereco</td>
-					<td>String</td>
-					<td>Endere√ßo da oficina</td>
-				</tr>
-			</tbody>
-		</table>
 
 	</div>
 </body>

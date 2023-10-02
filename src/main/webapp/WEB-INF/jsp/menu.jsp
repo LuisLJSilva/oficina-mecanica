@@ -21,12 +21,17 @@
           <a class="nav-link" href="/sobre"><i class="fas fa-info-circle"></i> Sobre</a> 
         </li>
         
-       <c:if test="${not empty user}">
-       <li class="nav-item">
-          <a class="nav-link" href="/usuario/lista"><i class="fas fa-user"></i> Usuários</a>
-        </li>
         <li class="nav-item">
-          <a class="nav-link" href="/cliente/lista"><i class="fas fa-user"></i> Clientes</a>
+          <a class="nav-link" href="/usuario/lista"><i class="fas fa-users"></i> Usuários</a>
+        </li>
+        
+       <c:if test="${not empty user}">
+       
+        <li class="nav-item">
+          <a class="nav-link" href="/cliente/lista"><i class="fas fa-handshake"></i> Clientes</a>
+        </li>
+         <li class="nav-item">
+          <a class="nav-link" href="/servico/lista"><i class="fas fa-cogs"></i> Serviços</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/alinhamento/lista"><i class="fas fa-cog"></i> Alinhamento</a>

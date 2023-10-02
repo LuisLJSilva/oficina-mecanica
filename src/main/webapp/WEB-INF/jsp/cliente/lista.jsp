@@ -18,10 +18,11 @@
 	  <table class="table table-striped">
 	    <thead>
 	      <tr>
-	      	<th>ID</th>
+	      	 
 	        <th>Nome</th>
 	        <th>CPF</th>
 	        <th>E-mail</th>
+	        <th>Usuário</th>
 	        <th></th>
 	      </tr>
 	    </thead>
@@ -33,6 +34,7 @@
 		        <td>${c.nome}</td>
 		        <td>${c.cpf}</td>
 		        <td>${c.email}</td>
+		        <td>${c.usuario.nome}</td>
 		        <td><a href="/cliente/${c.id}/excluir">excluir</a> </td>
 		      </tr>
 	      </c:forEach>

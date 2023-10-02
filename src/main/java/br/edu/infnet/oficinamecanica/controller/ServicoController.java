@@ -8,49 +8,50 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
-import br.edu.infnet.oficinamecanica.model.domain.Manutencao;
+import br.edu.infnet.oficinamecanica.model.domain.Servico;
 import br.edu.infnet.oficinamecanica.model.domain.Usuario;
-import br.edu.infnet.oficinamecanica.model.service.ManutencaoService;
+import br.edu.infnet.oficinamecanica.model.service.ServicoService;
 
 @Controller
-public class ManutencaoController {
+public class ServicoController {
 	
 	@Autowired
-	private  ManutencaoService manutencaoService;
+	private  ServicoService servicoService;
+	
 	
 
-	@GetMapping(value = "/manutencao/lista")
+	@GetMapping(value = "/servico/lista")
 	public String telaLista(Model model, @SessionAttribute("user") Usuario usuario) {
 
-		model.addAttribute("listaManutencao", manutencaoService.obterLista(usuario));
+		model.addAttribute("listaServico", servicoService.obterLista(usuario));
 		
-		return "manutencao/lista"; 
+		return "servico/lista"; 
 	}
 	
-	@GetMapping(value = "/manutencao/cadastro")
+	@GetMapping(value = "/servico/cadastro")
 	public String telaCadastro () {
 		
-		return "manutencao/cadastro";
+		return "servico/cadastro";
 	}
 	
-	@PostMapping(value = "/manutencao/incluir") 
-	public String incluir(Manutencao manutencao) {
+	@PostMapping(value = "/servico/incluir") 
+	public String incluir(Servico servico) {
 		
-		manutencaoService.incluir(manutencao);
+		servicoService.incluir(servico);
 				
-		return "redirect:/manutencao/lista";
+		return "redirect:/servico/lista";
 	}
 	
 	public void excluir(Integer id) {
-		manutencaoService.excluir(id);
+		servicoService.excluir(id);
 	}
 
-	@GetMapping(value = "/manutencao/{id}/excluir") 
+	@GetMapping(value = "/servico/{id}/excluir") 
 	public String exclusao(@PathVariable Integer id) {
 		
-		manutencaoService.excluir(id);
+		servicoService.excluir(id);
 
-		return "redirect:/manutencao/lista";
+		return "redirect:/servico/lista";
 	}
 
 

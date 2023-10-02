@@ -18,6 +18,7 @@
 	  <table class="table table-striped">
 	    <thead>
 	      <tr>
+	      	<th>ID</th>
 	      	<th>Tipo de Serviço</th>
 	      	<th>Preço</th>
 	      	<th>Codigo do Serviço</th>
@@ -31,13 +32,14 @@
 	   	  
 <c:forEach var="a" items="${listaAlinhamento}">
 		      <tr>
+		      	<td>${a.id}</td>
 		      	<td>${a.tipoServico}</td>
 		      	<td>${a.preco}</td>
 		      	<td>${a.codigoServico}</td>
 		        <td>${a.ajusteCambagem}</td>
 		        <td>${a.freiosVerificados}</td>
 		        <td>${a.condicaoPneus}</td>
-		        <td><a href="/alinhamento/${a.condicaoPneus}/excluir">excluir</a> </td>
+		        <td><a href="/alinhamento/${a.id}/excluir">excluir</a> </td>
 		      </tr>
 	      </c:forEach>
 	    </tbody>

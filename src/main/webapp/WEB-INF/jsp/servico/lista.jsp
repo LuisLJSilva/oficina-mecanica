@@ -8,35 +8,32 @@
   	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-
-<c:import url="/WEB-INF/jsp/menu.jsp"/>
+	<c:import url="/WEB-INF/jsp/menu.jsp"/>
 	
 	<div class="container-fluid mt-3">
-	  <h3>Listagem de Ordem de Serviço:</h3>
+	  <h3>Listagem de Serviços:</h3>
 
 	  <table class="table table-striped">
 	    <thead>
 	      <tr>
-	      <th>ID</th>
-	        <th>Status</th>
-	        <th>Data Agendamento</th>
-	        <th>Urgente</th>
-	        <th>Cliente</th>
-	        <th>Serviços</th>	        
+	     	<th>ID</th>
+	        <th>Tipo Serviço</th>
+	        <th>Preço</th>
+	        <th>Código do Serviço</th>
+	        <th>Ordem Servico</th>
 	        <th></th>
 	      </tr>
 	    </thead>
 	    <tbody>
-	   	  
-<c:forEach var="o" items="${listaOrdemServico}">
+	   	    
+	      <c:forEach var="s" items="${listaServico}">
 		      <tr>
-		      	<td>${o.id}</td>
-		        <td>${o.status}</td>
-		        <td>${o.dataAgendamento}</td>
-		        <td>${o.urgente}</td>
-		        <td>${o.cliente}</td>
-		        <td>${o.servicos}</td>
-		        <td><a href="/ordemservico/${o.id}/excluir">excluir</a> </td>
+		      	<td>${s.id}</td>
+		        <td>${s.tipoServico}</td>
+		        <td>${s.preco}</td>
+		        <td>${s.codigoServico}</td>
+		        <td>${s.ordemServico.size()}</td>
+		        <td><a href="/servico/${s.id}/excluir">excluir</a> </td>
 		      </tr>
 	      </c:forEach>
 	    </tbody>

@@ -1,4 +1,4 @@
-package br.edu.infnet.oficinamecanica;
+ package br.edu.infnet.oficinamecanica;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -9,21 +9,20 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
-import br.edu.infnet.oficinamecanica.model.domain.Cliente;
 import br.edu.infnet.oficinamecanica.model.domain.Usuario;
-import br.edu.infnet.oficinamecanica.model.service.ClienteService;
+import br.edu.infnet.oficinamecanica.model.service.UsuarioService;
 
-@Order(2)
+@Order(1)
 @Component
-public class ClienteLoader implements ApplicationRunner {
+public class UsuarioLoader implements ApplicationRunner {
 	
 	@Autowired
-	private ClienteService clienteService;
+	private UsuarioService usuarioService;
 		
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
 				 
-		FileReader file = new FileReader("arquivos/cliente.txt");
+		FileReader file = new FileReader("arquivos/usuario.txt");
 		BufferedReader leitura = new BufferedReader(file);
 		
 		String linha = leitura.readLine();
@@ -33,15 +32,13 @@ public class ClienteLoader implements ApplicationRunner {
 		while(linha != null) {
 			campos = linha.split(";");
 			
-			Cliente cliente = new Cliente(
-					campos[0],
-					campos[1],  
-					campos[2]
-					);
+			Usuario usuario = new Usuario();
+			usuario.setEmail(campos[0]);
+			usuario.setNome(campos[1]);
+			usuario.setSenha(campos[2]);
 			
-			cliente.setUsuario(new Usuario(1));
-			 
-			clienteService.incluir(cliente);
+			usuarioService.incluir(usuario);
+			
 			
 			linha = leitura.readLine();				
 		}

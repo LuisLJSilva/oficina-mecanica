@@ -3,13 +3,36 @@ package br.edu.infnet.oficinamecanica.model.domain;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "TOrdemServico")
 public class OrdemServico {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
 	private String status;
 	private LocalDateTime dataAgendamento;
 	private boolean urgente;
+	@OneToOne(cascade = CascadeType.DETACH)
+	@JoinColumn(name = "idCliente")
 	private Cliente cliente;
+	@ManyToMany(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
 	private List<Servico> servicos;
+	@ManyToOne
+	@JoinColumn(name = "idUsuario")
+	private Usuario usuario;
 	
 	
 	public OrdemServico() {
@@ -18,11 +41,12 @@ public class OrdemServico {
 		urgente = true;
 	}
 	
-	public OrdemServico(String status, Cliente cliente, List<Servico> servicos) {
+	public OrdemServico(String status, Cliente cliente, List<Servico> servicos, Usuario usuario) {
 		this();
 		this.status = status;
 		this.cliente = cliente;
 		this.servicos = servicos;
+		this.usuario = usuario;
 	}
 	
 	@Override
@@ -68,6 +92,22 @@ public class OrdemServico {
 
 	public void setServicos(List<Servico> servicos) {
 		this.servicos = servicos;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 	
 	

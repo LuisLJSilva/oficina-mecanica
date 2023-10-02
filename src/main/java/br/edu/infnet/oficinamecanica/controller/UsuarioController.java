@@ -20,7 +20,7 @@ public class UsuarioController {
 	private UsuarioService usuarioService;
 
 	@PostMapping(value = "/valida")
-	public String validaLogin(Model model, @RequestParam String email, @RequestParam String senha) {
+	public String validar(Model model, @RequestParam String email, @RequestParam String senha) {
 
 		Usuario user = usuarioService.validar(email, senha);
 
@@ -48,17 +48,17 @@ public class UsuarioController {
 	}
 
 	@PostMapping(value = "/usuario/incluir")
-	public String inclusao(Usuario usuario) {
+	public String incluir(Usuario usuario) {
 
 		usuarioService.incluir(usuario);
 
 		return "redirect:/";
 	}
 
-	@GetMapping(value = "/usuario/{email}/excluir")
-	public String exclusao(@PathVariable String email) {
+	@GetMapping(value = "/usuario/{id}/excluir")
+	public String exclusao(@PathVariable Integer id) {
 
-		usuarioService.excluir(email);
+		usuarioService.excluir(id);
 
 		return "redirect:/usuario/lista";
 	}

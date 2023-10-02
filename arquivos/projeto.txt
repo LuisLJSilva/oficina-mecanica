@@ -1,0 +1,25 @@
+P;Oficina Mecânica;Sistema de agendamento de serviços para seu automóvel
+C;OrdemServico
+A;urgente;boolean;Se o agendamento é urgente ou não
+A;dataAgendamento;LocalDateTime;Data e hora da ordem de serviço
+A;status;String;Status da ordem de serviço (Em andamento, Concluído, Agendado)
+C;Cliente
+A;nome;String;Nome do cliente
+A;cpf;String;CPF do cliente
+A;email;String;E-mail para contato
+C;Servico
+A;tipoServico;String;Descrição do tipo de serviço (Manutenção, Pintura, Alinhamento)
+A;preco;float;Preço do serviço
+A;codigoServico;int;Código para identificação do serviço
+C;Manutencao
+A;necessitaPeca;boolean;Se o veículo necessita de peças adicionais ou não
+A;tempoTrabalho;float;Tempo estimado de trabalho para concluir a manutenção, em horas
+A;tipoManutencao;String;Tipo de manutenção a ser realizada (Preventiva, Corretiva, Estética)
+C;Pintura
+A;intensidadeBrilho;float;Índice de brilho da pintura após a aplicação, em uma escala de 0 a 100
+A;tintaEcologica;boolean;Indica se a tinta usada na pintura é ecológica ou não
+A;cor;String;Cor da pintura que será aplicada (Azul, Vermelho, Preto)
+C;Alinhamento
+A;ajusteCambagem;float;Ajuste de cambagem em graus
+A;freiosVerificados;boolean;Se os freios foram verificados durante o alinhamento ou não
+A;condicaoPneus;String;Condição dos pneus (Novo, Usado, Desgastado)

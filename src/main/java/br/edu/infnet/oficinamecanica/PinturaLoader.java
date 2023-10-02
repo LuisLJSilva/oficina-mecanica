@@ -8,14 +8,13 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Controller;
 
 import br.edu.infnet.oficinamecanica.model.domain.Pintura;
+import br.edu.infnet.oficinamecanica.model.domain.Usuario;
 import br.edu.infnet.oficinamecanica.model.service.PinturaService;
 
-@Order(3)
+@Order(5)
 @Component
-@Controller
 public class PinturaLoader implements ApplicationRunner {
 	
 	@Autowired
@@ -41,6 +40,8 @@ public class PinturaLoader implements ApplicationRunner {
 							  Boolean.valueOf(campos[3]),
 							  Float.valueOf(campos[4]),
 							  campos[5]);
+			
+			pintura.setUsuario(new Usuario(Integer.valueOf(campos[6])));
 
 			pinturaService.incluir(pintura);
 

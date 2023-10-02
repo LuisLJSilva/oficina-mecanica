@@ -6,12 +6,12 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import br.edu.infnet.oficinamecanica.model.domain.Alinhamento;
+import br.edu.infnet.oficinamecanica.model.domain.Servico;
 
 @Repository
-public interface AlinhamentoRepository extends CrudRepository<Alinhamento, Integer> {
+public interface ServicoRepository extends CrudRepository<Servico, Integer> {
 	
-	@Query("from Alinhamento a where a.usuario.id =:userid")
-	public List<Alinhamento> obterLista(Integer userid);
+	@Query("from Servico s where s.usuario.id =:userid")
+	public List<Servico> obterLista(Integer userid);
 
 }

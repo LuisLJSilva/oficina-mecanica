@@ -2,12 +2,14 @@ package br.edu.infnet.oficinamecanica;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
-import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import br.edu.infnet.oficinamecanica.model.domain.Alinhamento;
@@ -16,9 +18,10 @@ import br.edu.infnet.oficinamecanica.model.domain.Manutencao;
 import br.edu.infnet.oficinamecanica.model.domain.OrdemServico;
 import br.edu.infnet.oficinamecanica.model.domain.Pintura;
 import br.edu.infnet.oficinamecanica.model.domain.Servico;
+import br.edu.infnet.oficinamecanica.model.domain.Usuario;
 import br.edu.infnet.oficinamecanica.model.service.OrdemServicoService;
 
-@Order(5)
+
 @Component
 public class OrdemServicoLoader implements ApplicationRunner {
 	
@@ -28,7 +31,9 @@ public class OrdemServicoLoader implements ApplicationRunner {
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
 		
-		FileReader file = new FileReader("arquivos/ordemservico.txt");
+		Map<LocalDateTime, OrdemServico> mapaOrdemServico = new HashMap<LocalDateTime, OrdemServico>();
+		
+		FileReader file = new FileReader("arquivos/ordemServicoCliente.txt");
 		BufferedReader leitura = new BufferedReader(file);
 		
 		String linha = leitura.readLine();
@@ -45,53 +50,32 @@ public class OrdemServicoLoader implements ApplicationRunner {
 				
 				ordemServico = new OrdemServico(
 						campos[1],
-						new Cliente(campos[2], campos[3], campos[4]),
-						new ArrayList<Servico>()
+						new Cliente(Integer.valueOf(campos[2])),
+						new ArrayList<Servico>(),
+						new Usuario(1)
 					);
 				
-				ordemServicoService.incluir(ordemServico);
+				mapaOrdemServico.put(ordemServico.getDataAgendamento(), ordemServico);
 				
 				break;
 				
 			case "M":
-				Manutencao manutencao = new Manutencao(
-						campos[1],
-						Float.valueOf(campos[2]),
-						Integer.valueOf(campos[3]),
-						Boolean.valueOf(campos[4]),
-						Float.valueOf(campos[5]),
-						campos[6]
-					);
-				
-				ordemServico.getServicos().add(manutencao);
+
+				ordemServico.getServicos().add(new Manutencao (Integer.valueOf(campos[1])));
 				
 				break;
 				
 			case "P":
-				Pintura pintura = new Pintura(
-						campos[1],
-						Float.valueOf(campos[2]),
-						Integer.valueOf(campos[3]),
-						Boolean.valueOf(campos[4]),
-						Float.valueOf(campos[5]),
-						campos[6]
-					);
 				
-				ordemServico.getServicos().add(pintura);
+				
+				ordemServico.getServicos().add(new Pintura (Integer.valueOf(campos[1])));
 				
 				break;
 				
 			case "A":
-				Alinhamento alinhamento = new Alinhamento(
-						campos[1],
-						Float.valueOf(campos[2]),
-						Integer.valueOf(campos[3]),
-						Boolean.valueOf(campos[4]),
-						Float.valueOf(campos[5]),
-						campos[6]
-					);
-				
-				ordemServico.getServicos().add(alinhamento);
+
+				ordemServico.getServicos().add(new Alinhamento (Integer.valueOf(campos[1])));
+
 				
 				break;
 				
@@ -101,6 +85,16 @@ public class OrdemServicoLoader implements ApplicationRunner {
 			
 			linha = leitura.readLine();			
 		}
+		
+		for(OrdemServico os : mapaOrdemServico.values()) {
+			ordemServicoService.incluir(os);
+			System.out.println("[Ordem Servico] Inclusão realizada com sucesso: " + os);			
+		}
+		
+		for(OrdemServico os : ordemServicoService.obterLista()) {
+			System.out.println("[Ordem Servico] Inclusão realizada com sucesso: " + os);			
+		}
+
 		
 		leitura.close();		 
 	} 
