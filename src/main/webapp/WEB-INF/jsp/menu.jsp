@@ -30,9 +30,6 @@
         <li class="nav-item">
           <a class="nav-link" href="/cliente/lista"><i class="fas fa-handshake"></i> Clientes</a>
         </li>
-         <li class="nav-item">
-          <a class="nav-link" href="/servico/lista"><i class="fas fa-cogs"></i> Serviços</a>
-        </li>
         <li class="nav-item">
           <a class="nav-link" href="/alinhamento/lista"><i class="fas fa-cog"></i> Alinhamento</a>
         </li>
@@ -41,6 +38,9 @@
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/pintura/lista"><i class="fas fa-paint-roller"></i> Pintura</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/servico/lista"><i class="fas fa-cogs"></i> Serviços</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/ordemservico/lista"><i class="fas fa-clipboard"></i> Ordem de Serviço</a>

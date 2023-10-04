@@ -18,6 +18,7 @@
 	  <table class="table table-striped">
 	    <thead>
 	      <tr>
+	      	<th>ID</th>
 	      	<th>Tipo de Serviço</th>
 	      	<th>Preço</th>
 	      	<th>Codigo do Serviço</th>
@@ -31,13 +32,14 @@
 	   	  
 <c:forEach var="p" items="${listaPintura}">
 		      <tr>
+		      	<td>${p.id}</td>
 		      	<td>${p.tipoServico}</td>
 		      	<td>${p.preco}</td>
 		      	<td>${p.codigoServico}</td>
 		        <td>${p.intensidadeBrilho}</td>
 		        <td>${p.tintaEcologica}</td>
 		        <td>${p.cor}</td>
-		        <td><a href="/pintura/${p.cor}/excluir">excluir</a> </td>
+		        <td><a href="/pintura/${p.id}/excluir">excluir</a> </td>
 		      </tr>
 	      </c:forEach>
 	    </tbody>

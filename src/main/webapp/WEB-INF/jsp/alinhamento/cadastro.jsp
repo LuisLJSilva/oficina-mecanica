@@ -13,20 +13,7 @@
 	  
 	  <form action="/alinhamento/incluir" method="post">
 	  
-	    <div class="mb-3">
-	      <label for="tipoServico">Tipo de Serviço:</label>
-	      <input type="text" class="form-control" value="Alinhamento e Balanceamento" id="tipoServico" placeholder="Entre com o tipo de serviço" name="tipoServico">
-	    </div>
-
-	    <div class="mb-3">
-	      <label for="preco">Preço:</label>
-	      <input type="number" step="0.01" class="form-control" value="300.00" id="preco" placeholder="Entre com o preço" name="preco">
-	    </div>
-	    
-	    <div class="mb-3">
-	      <label for="codigoServico">Código do Serviço:</label>
-	      <input type="number" class="form-control" value="0105" id="codigoServico" placeholder="Entre com o código do serviço" name="codigoServico">
-	    </div>
+	  <c:import url="/WEB-INF/jsp/servico/cadastro.jsp"/>
 	    
 	    <div class="mb-3">
 	      <label for="freiosVerificados">Freios Verificados:</label>

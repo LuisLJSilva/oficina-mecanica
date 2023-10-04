@@ -34,15 +34,13 @@ public class ManutencaoController {
 	}
 	
 	@PostMapping(value = "/manutencao/incluir") 
-	public String incluir(Manutencao manutencao) {
+	public String incluir(Manutencao manutencao, @SessionAttribute("user") Usuario usuario) {
+		
+		manutencao.setUsuario(usuario);
 		
 		manutencaoService.incluir(manutencao);
 				
 		return "redirect:/manutencao/lista";
-	}
-	
-	public void excluir(Integer id) {
-		manutencaoService.excluir(id);
 	}
 
 	@GetMapping(value = "/manutencao/{id}/excluir") 

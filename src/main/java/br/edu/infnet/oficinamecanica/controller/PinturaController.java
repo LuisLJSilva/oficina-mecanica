@@ -22,7 +22,7 @@ public class PinturaController {
 	@GetMapping(value = "/pintura/lista")
 	public String telaLista(Model model, @SessionAttribute("user") Usuario usuario) {
 
-		model.addAttribute("listaPintura", pinturaService.obterLista());
+		model.addAttribute("listaPintura", pinturaService.obterLista(usuario));
 		
 		return "pintura/lista";
 	}
@@ -34,7 +34,9 @@ public class PinturaController {
 	}
 	
 	@PostMapping(value = "/pintura/incluir") 
-	public String incluir(Pintura pintura) {
+	public String incluir(Pintura pintura, @SessionAttribute("user") Usuario usuario) {
+		
+		pintura.setUsuario(usuario);
 		
 		pinturaService.incluir(pintura);
 				

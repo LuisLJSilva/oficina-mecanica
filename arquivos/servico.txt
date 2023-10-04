@@ -1,0 +1,9 @@
+Alinhamento 4 rodas;1000.00;0101;true;0.7;Usado;1;A
+Alinhamento 2 rodas;300.00;0102;false;0.5;Novo;2;A
+Alinhamento e balanceamento;500.00;0103;true;0.9;Desgastado;3;A
+Troca de Farol;200.00;201;true;10.00;Estética;1;M
+Troca de Óleo;150.00;202;false;10.00;Preventiva;2;M
+Troca de Amortecedor;500.00;203;true;15.00;Corretiva;3;M
+Pintura completa;1000.00;301;true;0.7;Azul;1;P
+Retoque;300.00;302;false;0.5;Preto;2;P
+Pintura decorativa;500.00;303;true;0.9;Vermelho;3;P

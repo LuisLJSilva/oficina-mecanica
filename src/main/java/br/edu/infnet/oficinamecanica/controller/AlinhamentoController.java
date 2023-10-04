@@ -22,7 +22,7 @@ public class AlinhamentoController {
 	@GetMapping(value = "/alinhamento/lista")
 	public String telaLista(Model model, @SessionAttribute("user") Usuario usuario) {
 
-		model.addAttribute("listaAlinhamento", alinhamentoService.obterLista());
+		model.addAttribute("listaAlinhamento", alinhamentoService.obterLista(usuario));
 		
 		return "alinhamento/lista";
 	}
@@ -34,7 +34,9 @@ public class AlinhamentoController {
 	}
 	
 	@PostMapping(value = "/alinhamento/incluir") 
-	public String incluir(Alinhamento alinhamento) {
+	public String incluir(Alinhamento alinhamento, @SessionAttribute("user") Usuario usuario) {
+		
+		alinhamento.setUsuario(usuario);
 		
 		alinhamentoService.incluir(alinhamento);
 				

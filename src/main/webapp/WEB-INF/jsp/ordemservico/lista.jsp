@@ -12,7 +12,10 @@
 <c:import url="/WEB-INF/jsp/menu.jsp"/>
 	
 	<div class="container-fluid mt-3">
-	  <h3>Listagem de Ordem de Serviço:</h3>
+	  <h3>Listagem de Ordem de Serviço: ${listagem.size()}</h3>
+	  <h4><a href="/ordemservico">Nova Ordem Serviço</a></h4>
+	 
+	  
 
 	  <table class="table table-striped">
 	    <thead>
@@ -22,7 +25,7 @@
 	        <th>Data Agendamento</th>
 	        <th>Urgente</th>
 	        <th>Cliente</th>
-	        <th>Serviços</th>	        
+	        <th>Serviços</th>
 	        <th></th>
 	      </tr>
 	    </thead>
@@ -32,10 +35,10 @@
 		      <tr>
 		      	<td>${o.id}</td>
 		        <td>${o.status}</td>
-		        <td>${o.dataAgendamento}</td>
+		        <td>${o.formattedDataAgendamento}</td>
 		        <td>${o.urgente}</td>
-		        <td>${o.cliente}</td>
-		        <td>${o.servicos}</td>
+		        <td>${o.cliente.nome}</td>
+		        <td>${o.servicos.size()}</td>
 		        <td><a href="/ordemservico/${o.id}/excluir">excluir</a> </td>
 		      </tr>
 	      </c:forEach>

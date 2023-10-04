@@ -1,6 +1,7 @@
 package br.edu.infnet.oficinamecanica.model.domain;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -15,6 +16,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity
 @Table(name = "TOrdemServico")
 public class OrdemServico {
@@ -23,6 +26,7 @@ public class OrdemServico {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String status;
+	@DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
 	private LocalDateTime dataAgendamento;
 	private boolean urgente;
 	@OneToOne(cascade = CascadeType.DETACH)
@@ -33,6 +37,11 @@ public class OrdemServico {
 	@ManyToOne
 	@JoinColumn(name = "idUsuario")
 	private Usuario usuario;
+	
+	public String getFormattedDataAgendamento() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
+        return this.dataAgendamento.format(formatter);
+    }
 	
 	
 	public OrdemServico() {

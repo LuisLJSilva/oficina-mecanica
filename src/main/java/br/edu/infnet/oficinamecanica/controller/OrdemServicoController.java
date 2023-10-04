@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 
 import br.edu.infnet.oficinamecanica.model.domain.OrdemServico;
 import br.edu.infnet.oficinamecanica.model.domain.Usuario;
+import br.edu.infnet.oficinamecanica.model.service.ClienteService;
 import br.edu.infnet.oficinamecanica.model.service.OrdemServicoService;
+import br.edu.infnet.oficinamecanica.model.service.ServicoService;
 
 
 @Controller
@@ -19,7 +21,11 @@ public class OrdemServicoController {
 	
 	@Autowired
 	private OrdemServicoService ordemServicoService;
-
+	@Autowired
+	private ClienteService clienteService;
+	@Autowired
+	private ServicoService servicoService;
+	
 	
 	@GetMapping(value = "/ordemservico/lista")
 	public String telaLista(Model model, @SessionAttribute("user") Usuario usuario) {
@@ -29,26 +35,27 @@ public class OrdemServicoController {
 		return "ordemservico/lista"; 
 	}
 
-	@GetMapping(value = "/ordemservico/cadastro")
-	public String telaCadastro () {
+	@GetMapping(value = "/ordemservico")
+	public String telaCadastro(Model model, @SessionAttribute("user") Usuario usuario) {
 		
-		return "ordemservico/cadastro";
+		model.addAttribute("clientes", clienteService.obterLista(usuario));
+
+		model.addAttribute("servicos", servicoService.obterLista(usuario));
+		
+		return "ordemservico/cadastro"; 
 	}
 	
 	@PostMapping(value = "/ordemservico/incluir") 
-	public String incluir(OrdemServico ordemServico) {
+	public String incluir(OrdemServico ordemServico, @SessionAttribute("user") Usuario usuario) {
 		
+		ordemServico.setUsuario(usuario);
 		ordemServicoService.incluir(ordemServico);
 				
 		return "redirect:/ordemservico/lista";
 	}
-	
-	public void excluir(Integer id) {
-		ordemServicoService.excluir(id);
-	}
 
 	@GetMapping(value = "/ordemservico/{id}/excluir") 
-	public String exclusao(@PathVariable Integer id) {
+	public String excluir(@PathVariable Integer id) {
 		
 		ordemServicoService.excluir(id);
 
